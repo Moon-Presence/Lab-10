@@ -5,19 +5,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Р­С‚Р°Рї 1:РћР±СЂР°Р±РѕС‚РєР° РІСЃС‚СЂРѕРµРЅРЅС‹С… С‚РёРїРѕРІ РёСЃРєР»СЋС‡РµРЅРёР№");
+        System.out.println("Этап 1:Обработка встроенных типов исключений");
         method1();
-        System.out.println("\nР­С‚Р°Рї 2:РћР±СЂР°Р±РѕС‚РєР° РёСЃРєР»СЋС‡РµРЅРёР№ СЃ РёС… РѕРїРёСЃР°РЅРёРµРј");
+        System.out.println("\nЭтап 2:Обработка исключений с их описанием");
         method2();
-        System.out.println("\nР­С‚Р°Рї 3:РћР±СЂР°Р±РѕС‚РєР° РЅРµСЃРєРѕР»СЊРєРёС… СЂР°Р·РЅРѕС‚РёРїРЅС‹С… РёСЃРєР»СЋС‡РµРЅРёР№");
+        System.out.println("\nЭтап 3:Обработка нескольких разнотипных исключений");
         try{
             Scanner scan=new Scanner(System.in);
             int i = scan.nextInt();
             method3(i);}
         catch(InputMismatchException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e+
-                    "\nРџРµСЂРµР·Р°РїСѓСЃС‚РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ"); };
-        System.out.println("\nР­С‚Р°Рї 4:РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±СЃС‚РІРµРЅРЅС‹С… РёСЃРєР»СЋС‡РµРЅРёР№");
+            Log.console("Перехвачено исключение: "+e+
+                    "\nПерезапустите программу и повторите попытку"); };
+        System.out.println("\nЭтап 4:Обработка собственных исключений");
         method4();
     }
 
@@ -25,10 +25,10 @@ public class Main {
         int i=7,u=8;
         try{
             int g=1/(i/u);
-            Log.console("Р”РµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ РЅРµ РїРµСЂРµС…РІР°С‡РµРЅРѕ");
+            Log.console("Деление на ноль не перехвачено");
         }
         catch(ArithmeticException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ");
+            Log.console("Перехвачено исключение");
         }
     }
     public static void method2(){
@@ -36,10 +36,10 @@ public class Main {
         int y [] =new int[5] ;
         try{
             Log.console(Integer.toString(y[i]));
-            Log.console("Р’С‹С…РѕРґ Р·Р° РїСЂРµРґРµР»С‹ РјР°СЃСЃРёРІР° РЅРµ РїРµСЂРµС…РІР°С‡РµРЅ");
+            Log.console("Выход за пределы массива не перехвачен");
         }
         catch(ArrayIndexOutOfBoundsException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
     }
     public static void method3(int i){
@@ -55,22 +55,22 @@ public class Main {
                             case 2:throw new NullPointerException();}
             }}
         catch(ArithmeticException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
         catch(ArrayIndexOutOfBoundsException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
         catch(UnsupportedOperationException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
         catch(NullPointerException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
         catch(IllegalStateException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
         catch(IllegalArgumentException e){
-            Log.console("РџРµСЂРµС…РІР°С‡РµРЅРѕ РёСЃРєР»СЋС‡РµРЅРёРµ: "+e);
+            Log.console("Перехвачено исключение: "+e);
         }
     }
     public static void method4(){
@@ -78,7 +78,7 @@ public class Main {
             ExceptionDemo.compute(1);
             ExceptionDemo.compute(20);
         }
-        catch(MyException e){ System.out.println("РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±СЃС‚РІРµРЅРЅРѕРіРѕ РёСЃРєР»СЋС‡РµРЅРёСЏ: "+e);}
+        catch(MyException e){ System.out.println("Обработка собственного исключения: "+e);}
     }
 
 }
@@ -89,7 +89,7 @@ class MyException extends Exception {
 }
 class ExceptionDemo {
             static void compute ( int a) throws MyException{
-                System.out.println( "BС‹Р·РІaРЅ РјРµС‚РѕРґ compute[ " + a + " ]");
+                System.out.println( "Bызвaн метод compute[ " + a + " ]");
                 if( a > 10 )
                     throw new MyException(a) ;
-                    System.out.println("HopРјaР»СЊРЅoe Р·Р°РІРµСЂС€РµРЅРёРµ");}}
+                    System.out.println("Hopмaльнoe завершение");}}
