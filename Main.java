@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Этап 1:Обработка встроенных типов исключений");
+        System.out.println("Этап 1: Обработка встроенных типов исключений");
         method1();
-        System.out.println("\nЭтап 2:Обработка исключений с их описанием");
+        System.out.println("\nЭтап 2: Обработка исключений с их описанием");
         method2();
-        System.out.println("\nЭтап 3:Обработка нескольких разнотипных исключений");
+        System.out.println("\nЭтап 3: Обработка нескольких разнотипных исключений");
+        System.out.println("Введите целое число ");
         try{
             Scanner scan=new Scanner(System.in);
             int i = scan.nextInt();
@@ -17,12 +18,13 @@ public class Main {
         catch(InputMismatchException e){
             Log.console("Перехвачено исключение: "+e+
                     "\nПерезапустите программу и повторите попытку"); };
-        System.out.println("\nЭтап 4:Обработка собственных исключений");
+        System.out.println("\nЭтап 4: Обработка собственных исключений");
         method4();
     }
 
     public static void method1(){
-        int i=7,u=8;
+        int i=7;
+        int u=8;
         try{
             int g=1/(i/u);
             Log.console("Деление на ноль не перехвачено");
@@ -33,7 +35,7 @@ public class Main {
     }
     public static void method2(){
         int i =7;
-        int y [] =new int[5] ;
+        int y[] =new int[5] ;
         try{
             Log.console(Integer.toString(y[i]));
             Log.console("Выход за пределы массива не перехвачен");
@@ -49,10 +51,10 @@ public class Main {
                 case 2:throw new ArrayIndexOutOfBoundsException();
                 case 3:throw new UnsupportedOperationException();
                 default:Random c =new Random();
-                        switch(c.nextInt(3)){
-                            case 0:throw new IllegalArgumentException();
-                            case 1:throw new IllegalStateException();
-                            case 2:throw new NullPointerException();}
+                    switch(c.nextInt(3)){
+                        case 0:throw new IllegalArgumentException();
+                        case 1:throw new IllegalStateException();
+                        case 2:throw new NullPointerException();}
             }}
         catch(ArithmeticException e){
             Log.console("Перехвачено исключение: "+e);
@@ -83,13 +85,13 @@ public class Main {
 
 }
 class MyException extends Exception {
-    private int i;
-    MyException(int a){i=a;}
-    public String toString(){return "MyException type[ "+i+" ]";}
+    private int a;
+    MyException(int a)  { this.a=a; }
+    public String toString(){return "MyException type ["+this.a+"]";}
 }
 class ExceptionDemo {
-            static void compute ( int a) throws MyException{
-                System.out.println( "Bызвaн метод compute[ " + a + " ]");
-                if( a > 10 )
-                    throw new MyException(a) ;
-                    System.out.println("Hopмaльнoe завершение");}}
+    static void compute ( int a) throws MyException{
+        System.out.println( "Bызвaн метод compute [" + a + "]");
+        if( a > 10 ){
+            throw new MyException(a) ;}
+        System.out.println("Hopмaльнoe завершение");}}
